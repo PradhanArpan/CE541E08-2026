@@ -1,0 +1,409 @@
+{
+  "sessions": [
+    {
+      "day": 1,
+      "unit": 1,
+      "unit_name": "Introduction to Python",
+      "folder": "Unit1_PythonBasics",
+      "notebook": "CE541E08_U1_Day1.ipynb",
+      "topic": "Platform setup \u00b7 Colab orientation \u00b7 GitHub first commit",
+      "enabled": false
+    },
+    {
+      "day": 2,
+      "unit": 1,
+      "unit_name": "Introduction to Python",
+      "folder": "Unit1_PythonBasics",
+      "notebook": "CE541E08_U1_Day2.ipynb",
+      "topic": "Elements of Python language \u00b7 syntax & indentation",
+      "enabled": false
+    },
+    {
+      "day": 3,
+      "unit": 1,
+      "unit_name": "Introduction to Python",
+      "folder": "Unit1_PythonBasics",
+      "notebook": "CE541E08_U1_Day3.ipynb",
+      "topic": "Python block structure \u00b7 import statements",
+      "enabled": false
+    },
+    {
+      "day": 4,
+      "unit": 1,
+      "unit_name": "Introduction to Python",
+      "folder": "Unit1_PythonBasics",
+      "notebook": "CE541E08_U1_Day4.ipynb",
+      "topic": "Variables and assignment statements",
+      "enabled": false
+    },
+    {
+      "day": 5,
+      "unit": 1,
+      "unit_name": "Introduction to Python",
+      "folder": "Unit1_PythonBasics",
+      "notebook": "CE541E08_U1_Day5.ipynb",
+      "topic": "Data types \u2014 int, float, string, bool",
+      "enabled": false
+    },
+    {
+      "day": 6,
+      "unit": 1,
+      "unit_name": "Introduction to Python",
+      "folder": "Unit1_PythonBasics",
+      "notebook": "CE541E08_U1_Day6.ipynb",
+      "topic": "Operations and expressions",
+      "enabled": false
+    },
+    {
+      "day": 7,
+      "unit": 1,
+      "unit_name": "Introduction to Python",
+      "folder": "Unit1_PythonBasics",
+      "notebook": "CE541E08_U1_Day7.ipynb",
+      "topic": "input() and print() \u00b7 simple I/O",
+      "enabled": false
+    },
+    {
+      "day": 8,
+      "unit": 1,
+      "unit_name": "Introduction to Python",
+      "folder": "Unit1_PythonBasics",
+      "notebook": "CE541E08_U1_Day8.ipynb",
+      "topic": "Formatting print statements \u00b7 f-strings",
+      "enabled": false
+    },
+    {
+      "day": 9,
+      "unit": 1,
+      "unit_name": "Introduction to Python",
+      "folder": "Unit1_PythonBasics",
+      "notebook": "CE541E08_U1_Day9.ipynb",
+      "topic": "Assignment workshop \u00b7 GitHub push \u00b7 peer review",
+      "enabled": false
+    },
+    {
+      "day": 10,
+      "unit": 2,
+      "unit_name": "Decision Structures & Looping",
+      "folder": "Unit2_LoopsDecisions",
+      "notebook": "CE541E08_U2_Day10.ipynb",
+      "topic": "Forming conditions \u00b7 if statement",
+      "enabled": false
+    },
+    {
+      "day": 11,
+      "unit": 2,
+      "unit_name": "Decision Structures & Looping",
+      "folder": "Unit2_LoopsDecisions",
+      "notebook": "CE541E08_U2_Day11.ipynb",
+      "topic": "if-else \u00b7 two-way decisions",
+      "enabled": false
+    },
+    {
+      "day": 12,
+      "unit": 2,
+      "unit_name": "Decision Structures & Looping",
+      "folder": "Unit2_LoopsDecisions",
+      "notebook": "CE541E08_U2_Day12.ipynb",
+      "topic": "Nested if-else \u00b7 multi-criteria decisions",
+      "enabled": false
+    },
+    {
+      "day": 13,
+      "unit": 2,
+      "unit_name": "Decision Structures & Looping",
+      "folder": "Unit2_LoopsDecisions",
+      "notebook": "CE541E08_U2_Day13.ipynb",
+      "topic": "for loop with range()",
+      "enabled": false
+    },
+    {
+      "day": 14,
+      "unit": 2,
+      "unit_name": "Decision Structures & Looping",
+      "folder": "Unit2_LoopsDecisions",
+      "notebook": "CE541E08_U2_Day14.ipynb",
+      "topic": "Built-in loop functions \u00b7 range, enumerate, zip",
+      "enabled": false
+    },
+    {
+      "day": 15,
+      "unit": 2,
+      "unit_name": "Decision Structures & Looping",
+      "folder": "Unit2_LoopsDecisions",
+      "notebook": "CE541E08_U2_Day15.ipynb",
+      "topic": "while loop",
+      "enabled": false
+    },
+    {
+      "day": 16,
+      "unit": 2,
+      "unit_name": "Decision Structures & Looping",
+      "folder": "Unit2_LoopsDecisions",
+      "notebook": "CE541E08_U2_Day16.ipynb",
+      "topic": "Jump statements \u00b7 break, continue, pass",
+      "enabled": false
+    },
+    {
+      "day": 17,
+      "unit": 2,
+      "unit_name": "Decision Structures & Looping",
+      "folder": "Unit2_LoopsDecisions",
+      "notebook": "CE541E08_U2_Day17.ipynb",
+      "topic": "Mini dataset exercise \u00b7 30-day IMD rainfall",
+      "enabled": false
+    },
+    {
+      "day": 18,
+      "unit": 2,
+      "unit_name": "Decision Structures & Looping",
+      "folder": "Unit2_LoopsDecisions",
+      "notebook": "CE541E08_U2_Day18.ipynb",
+      "topic": "CIA I workshop \u00b7 GitHub push \u00b7 peer review",
+      "enabled": false
+    },
+    {
+      "day": 19,
+      "unit": 3,
+      "unit_name": "The NumPy Library",
+      "folder": "Unit3_NumPy",
+      "notebook": "CE541E08_U3_Day19.ipynb",
+      "topic": "NumPy intro \u00b7 Matplotlib \u00b7 rainfall time series",
+      "enabled": false
+    },
+    {
+      "day": 20,
+      "unit": 3,
+      "unit_name": "The NumPy Library",
+      "folder": "Unit3_NumPy",
+      "notebook": "CE541E08_U3_Day20.ipynb",
+      "topic": "1-D, 2-D, 3-D arrays",
+      "enabled": false
+    },
+    {
+      "day": 21,
+      "unit": 3,
+      "unit_name": "The NumPy Library",
+      "folder": "Unit3_NumPy",
+      "notebook": "CE541E08_U3_Day21.ipynb",
+      "topic": "Indexing and slicing",
+      "enabled": false
+    },
+    {
+      "day": 22,
+      "unit": 3,
+      "unit_name": "The NumPy Library",
+      "folder": "Unit3_NumPy",
+      "notebook": "CE541E08_U3_Day22.ipynb",
+      "topic": "Iterating over arrays",
+      "enabled": false
+    },
+    {
+      "day": 23,
+      "unit": 3,
+      "unit_name": "The NumPy Library",
+      "folder": "Unit3_NumPy",
+      "notebook": "CE541E08_U3_Day23.ipynb",
+      "topic": "Boolean arrays and conditions",
+      "enabled": false
+    },
+    {
+      "day": 24,
+      "unit": 3,
+      "unit_name": "The NumPy Library",
+      "folder": "Unit3_NumPy",
+      "notebook": "CE541E08_U3_Day24.ipynb",
+      "topic": "Basic operations \u00b7 broadcasting",
+      "enabled": false
+    },
+    {
+      "day": 25,
+      "unit": 3,
+      "unit_name": "The NumPy Library",
+      "folder": "Unit3_NumPy",
+      "notebook": "CE541E08_U3_Day25.ipynb",
+      "topic": "Array manipulation \u00b7 reshape, transpose, stack",
+      "enabled": false
+    },
+    {
+      "day": 26,
+      "unit": 3,
+      "unit_name": "The NumPy Library",
+      "folder": "Unit3_NumPy",
+      "notebook": "CE541E08_U3_Day26.ipynb",
+      "topic": "Reading & writing files \u00b7 loadtxt, savetxt",
+      "enabled": false
+    },
+    {
+      "day": 27,
+      "unit": 3,
+      "unit_name": "The NumPy Library",
+      "folder": "Unit3_NumPy",
+      "notebook": "CE541E08_U3_Day27.ipynb",
+      "topic": "Assignment workshop \u00b7 flow duration curve",
+      "enabled": false
+    },
+    {
+      "day": 28,
+      "unit": 4,
+      "unit_name": "The Pandas Library",
+      "folder": "Unit4_Pandas",
+      "notebook": "CE541E08_U4_Day28.ipynb",
+      "topic": "Introduction to Pandas \u00b7 Series & DataFrame",
+      "enabled": false
+    },
+    {
+      "day": 29,
+      "unit": 4,
+      "unit_name": "The Pandas Library",
+      "folder": "Unit4_Pandas",
+      "notebook": "CE541E08_U4_Day29.ipynb",
+      "topic": "Inspecting data \u00b7 head, info, describe",
+      "enabled": false
+    },
+    {
+      "day": 30,
+      "unit": 4,
+      "unit_name": "The Pandas Library",
+      "folder": "Unit4_Pandas",
+      "notebook": "CE541E08_U4_Day30.ipynb",
+      "topic": "Indexing \u00b7 loc, iloc, DatetimeIndex",
+      "enabled": false
+    },
+    {
+      "day": 31,
+      "unit": 4,
+      "unit_name": "The Pandas Library",
+      "folder": "Unit4_Pandas",
+      "notebook": "CE541E08_U4_Day31.ipynb",
+      "topic": "Operations between structures \u00b7 merge & join",
+      "enabled": false
+    },
+    {
+      "day": 32,
+      "unit": 4,
+      "unit_name": "The Pandas Library",
+      "folder": "Unit4_Pandas",
+      "notebook": "CE541E08_U4_Day32.ipynb",
+      "topic": "groupby() and resample()",
+      "enabled": false
+    },
+    {
+      "day": 33,
+      "unit": 4,
+      "unit_name": "The Pandas Library",
+      "folder": "Unit4_Pandas",
+      "notebook": "CE541E08_U4_Day33.ipynb",
+      "topic": "Function application \u00b7 apply() and map()",
+      "enabled": false
+    },
+    {
+      "day": 34,
+      "unit": 4,
+      "unit_name": "The Pandas Library",
+      "folder": "Unit4_Pandas",
+      "notebook": "CE541E08_U4_Day34.ipynb",
+      "topic": "Mapping \u00b7 replacing codes with labels",
+      "enabled": false
+    },
+    {
+      "day": 35,
+      "unit": 4,
+      "unit_name": "The Pandas Library",
+      "folder": "Unit4_Pandas",
+      "notebook": "CE541E08_U4_Day35.ipynb",
+      "topic": "Visualisation \u00b7 trends, scatter, box plots",
+      "enabled": false
+    },
+    {
+      "day": 36,
+      "unit": 4,
+      "unit_name": "The Pandas Library",
+      "folder": "Unit4_Pandas",
+      "notebook": "CE541E08_U4_Day36.ipynb",
+      "topic": "Assignment workshop \u00b7 river basin analysis",
+      "enabled": false
+    },
+    {
+      "day": 37,
+      "unit": 5,
+      "unit_name": "Introduction to MATLAB",
+      "folder": "Unit5_MATLAB",
+      "notebook": "CE541E08_U5_Day37.ipynb",
+      "topic": "MATLAB UI \u00b7 Command Window \u00b7 MATLAB Drive",
+      "enabled": false
+    },
+    {
+      "day": 38,
+      "unit": 5,
+      "unit_name": "Introduction to MATLAB",
+      "folder": "Unit5_MATLAB",
+      "notebook": "CE541E08_U5_Day38.ipynb",
+      "topic": "Fundamentals \u00b7 variables, data types",
+      "enabled": false
+    },
+    {
+      "day": 39,
+      "unit": 5,
+      "unit_name": "Introduction to MATLAB",
+      "folder": "Unit5_MATLAB",
+      "notebook": "CE541E08_U5_Day39.ipynb",
+      "topic": "Mathematical expressions \u00b7 built-in functions",
+      "enabled": false
+    },
+    {
+      "day": 40,
+      "unit": 5,
+      "unit_name": "Introduction to MATLAB",
+      "folder": "Unit5_MATLAB",
+      "notebook": "CE541E08_U5_Day40.ipynb",
+      "topic": "Colon notation",
+      "enabled": false
+    },
+    {
+      "day": 41,
+      "unit": 5,
+      "unit_name": "Introduction to MATLAB",
+      "folder": "Unit5_MATLAB",
+      "notebook": "CE541E08_U5_Day41.ipynb",
+      "topic": "Array operations \u00b7 .*, ./, size, sum",
+      "enabled": false
+    },
+    {
+      "day": 42,
+      "unit": 5,
+      "unit_name": "Introduction to MATLAB",
+      "folder": "Unit5_MATLAB",
+      "notebook": "CE541E08_U5_Day42.ipynb",
+      "topic": "Loop \u2013 for",
+      "enabled": false
+    },
+    {
+      "day": 43,
+      "unit": 5,
+      "unit_name": "Introduction to MATLAB",
+      "folder": "Unit5_MATLAB",
+      "notebook": "CE541E08_U5_Day43.ipynb",
+      "topic": "Loop \u2013 while \u00b7 break \u00b7 continue",
+      "enabled": false
+    },
+    {
+      "day": 44,
+      "unit": 5,
+      "unit_name": "Introduction to MATLAB",
+      "folder": "Unit5_MATLAB",
+      "notebook": "CE541E08_U5_Day44.ipynb",
+      "topic": "Capstone Phase I workshop",
+      "enabled": false
+    },
+    {
+      "day": 45,
+      "unit": 5,
+      "unit_name": "Introduction to MATLAB",
+      "folder": "Unit5_MATLAB",
+      "notebook": "CE541E08_U5_Day45.ipynb",
+      "topic": "Capstone Phase II presentations & viva",
+      "enabled": false
+    }
+  ]
+}
