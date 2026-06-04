@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CE541E08 — Course Delivery Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0f1f3d;--navy-mid:#1a3260;--gold:#c8973a;--gold-light:#e8b95a;
+  --cream:#faf8f4;--g100:#f4f2ee;--g200:#e8e4dc;--g400:#a09080;--g600:#6b5f52;
+  --text:#1a1410;--tl:#5a5048;--white:#fff;--green:#2d6a4f;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);font-size:14px;line-height:1.6;min-height:100vh}
+.shell{display:flex;height:100vh;overflow:hidden}
+
+/* SIDEBAR */
+.sb{width:242px;flex-shrink:0;background:var(--navy);display:flex;flex-direction:column;overflow-y:auto}
+.sb-brand{padding:20px 18px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
+.sb-dept{font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-light);opacity:.85}
+.sb-code{font-family:'EB Garamond',serif;font-size:26px;font-weight:700;color:var(--white);line-height:1;margin:4px 0 2px}
+.sb-title{font-size:10px;color:rgba(255,255,255,.55);line-height:1.4;font-weight:300}
+.sb-tag{display:inline-block;margin-top:8px;padding:2px 8px;background:rgba(200,151,58,.2);border:1px solid rgba(200,151,58,.4);border-radius:3px;font-size:9px;color:var(--gold-light);font-weight:500;letter-spacing:.08em}
+.nav-lbl{padding:14px 18px 4px;font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.nav-btn{display:flex;align-items:center;gap:10px;padding:9px 18px;cursor:pointer;border:none;background:transparent;width:100%;text-align:left;color:rgba(255,255,255,.6);font-family:'DM Sans',sans-serif;font-size:12.5px;transition:all .18s;border-left:2px solid transparent}
+.nav-btn:hover{background:rgba(255,255,255,.05);color:rgba(255,255,255,.9)}
+.nav-btn.active{background:rgba(200,151,58,.12);color:var(--white);border-left-color:var(--gold);font-weight:500}
+.nav-icon{width:16px;height:16px;opacity:.7;flex-shrink:0}
+.nav-btn.active .nav-icon{opacity:1}
+.sb-links{padding:12px 18px;border-top:1px solid rgba(255,255,255,.06)}
+.sb-links-lbl{font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:8px}
+.sb-link{display:flex;align-items:center;gap:7px;padding:5px 0;font-size:11px;color:rgba(255,255,255,.55);text-decoration:none;transition:color .15s;border-bottom:1px solid rgba(255,255,255,.04)}
+.sb-link:hover{color:var(--gold-light)}
+.sb-link:last-child{border-bottom:none}
+.sb-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.sb-footer{margin-top:auto;padding:14px 18px;border-top:1px solid rgba(255,255,255,.06);font-size:10px;color:rgba(255,255,255,.28);line-height:1.6}
+
+/* MAIN */
+.main{flex:1;overflow-y:auto;background:var(--cream)}
+.page{display:none;padding:36px 40px 60px;max-width:960px}
+.page.active{display:block}
+.ph{margin-bottom:28px;padding-bottom:20px;border-bottom:2px solid var(--g200);display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.ph h1{font-family:'EB Garamond',serif;font-size:28px;font-weight:600;color:var(--navy);line-height:1.2}
+.ph-tag{flex-shrink:0;background:var(--navy);color:var(--white);font-size:10px;font-weight:600;letter-spacing:.1em;padding:4px 12px;border-radius:4px;text-transform:uppercase;margin-top:4px}
+.sec-title{font-family:'EB Garamond',serif;font-size:17px;font-weight:600;color:var(--navy-mid);margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--g200);display:flex;align-items:center;gap:8px}
+.sec-title::before{content:'';display:inline-block;width:3px;height:18px;background:var(--gold);border-radius:2px;flex-shrink:0}
+.callout{border-radius:8px;padding:14px 18px;margin-bottom:16px;font-size:13px;line-height:1.6;display:flex;gap:10px;align-items:flex-start}
+.callout.blue{background:#eff6ff;border-left:3px solid #3b82f6}
+.callout.amber{background:#fffbeb;border-left:3px solid var(--gold)}
+.callout .icon{font-size:16px;flex-shrink:0;margin-top:1px}
+
+/* TABLES */
+.tw{overflow-x:auto}
+table.t{width:100%;border-collapse:collapse;font-size:12.5px;background:var(--white);border-radius:8px;overflow:hidden;border:1px solid var(--g200)}
+table.t thead tr{background:var(--navy);color:var(--white)}
+table.t thead th{padding:11px 14px;text-align:left;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+table.t tbody tr:nth-child(even){background:#f8f6f2}
+table.t tbody tr:hover{background:#eef4ff}
+table.t tbody tr.locked td{opacity:.5}
+table.t td{padding:10px 14px;border-bottom:1px solid var(--g200);vertical-align:middle;line-height:1.5}
+.day-num{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;color:var(--navy-mid);background:var(--g100);padding:2px 6px;border-radius:4px;display:inline-block}
+
+/* BADGES */
+.co-badge{display:inline-block;padding:3px 8px;border-radius:4px;font-weight:600;font-size:11px}
+.u1b{background:#dbeafe;color:#1e3a8a}.u2b{background:#dcfce7;color:#14532d}
+.u3b{background:#fce7f3;color:#831843}.u4b{background:#ffedd5;color:#7c2d12}
+.u5b{background:#f3e8ff;color:#581c87}
+
+/* STATUS */
+.s-open{display:inline-flex;align-items:center;gap:4px;font-family:'DM Mono',monospace;font-size:10px;color:var(--green);white-space:nowrap}
+.s-open::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0}
+.s-lock{display:inline-flex;align-items:center;gap:4px;font-family:'DM Mono',monospace;font-size:10px;color:var(--g400);white-space:nowrap}
+.s-lock::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--g400);flex-shrink:0}
+
+/* BUTTONS */
+.nb-link{display:inline-flex;align-items:center;gap:3px;font-family:'DM Mono',monospace;font-size:10px;padding:4px 10px;border:1px solid #1a4a6b;border-radius:3px;color:#1a4a6b;text-decoration:none;transition:all .12s;white-space:nowrap;font-weight:500}
+.nb-link:hover{background:#1a4a6b;color:#fff}
+.gh-link{display:inline-flex;align-items:center;gap:3px;font-family:'DM Mono',monospace;font-size:10px;padding:4px 10px;border:1px solid #2d6a3f;border-radius:3px;color:#2d6a3f;text-decoration:none;transition:all .12s;white-space:nowrap}
+.gh-link:hover{background:#2d6a3f;color:#fff}
+.data-link{display:inline-flex;align-items:center;gap:3px;font-family:'DM Mono',monospace;font-size:10px;padding:4px 10px;border:1px solid #7a4a00;border-radius:3px;color:#7a4a00;text-decoration:none;transition:all .12s;white-space:nowrap}
+.data-link:hover{background:#7a4a00;color:#fff}
+.locked-pill{display:inline-flex;align-items:center;gap:5px;font-family:'DM Mono',monospace;font-size:10px;padding:4px 10px;border-radius:3px;background:var(--g100);color:var(--g400);border:1px solid var(--g200)}
+.btn-row{display:flex;gap:5px;flex-wrap:wrap}
+
+/* UNIT HERO */
+.unit-hero{background:var(--navy);border-radius:10px;padding:18px 22px;margin-bottom:20px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.uh-left .uh-num{font-family:'EB Garamond',serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;opacity:.6;color:var(--white)}
+.uh-left .uh-name{font-family:'EB Garamond',serif;font-size:22px;font-weight:600;color:var(--white);margin-top:2px}
+.uh-left .uh-syl{font-size:11.5px;color:rgba(255,255,255,.55);margin-top:6px;line-height:1.5;max-width:500px}
+.uh-right{display:flex;flex-direction:column;gap:8px;align-items:flex-end;flex-shrink:0}
+.hrs-badge{background:var(--gold);color:var(--navy);padding:4px 12px;border-radius:12px;font-size:11px;font-weight:700}
+
+/* HOME */
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.stat{background:var(--white);border:1px solid var(--g200);border-radius:8px;padding:16px;text-align:center}
+.stat .sv{font-family:'EB Garamond',serif;font-size:36px;font-weight:700;color:var(--navy);line-height:1}
+.stat .sl{font-size:10px;color:var(--g400);text-transform:uppercase;letter-spacing:.1em;margin-top:4px;font-weight:600}
+.unc{background:var(--white);border:1px solid var(--g200);border-radius:8px;padding:14px 16px;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:all .15s;text-decoration:none;color:var(--text)}
+.unc:hover{border-color:var(--navy);background:var(--g100)}
+.unc-l{display:flex;align-items:center;gap:12px}
+.unc-badge{width:36px;height:36px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:12px;font-weight:500;flex-shrink:0}
+.unc-title{font-size:13.5px;font-weight:600}
+.unc-sub{font-size:11px;color:var(--g400);margin-top:1px}
+.unc-r{font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);font-weight:500;white-space:nowrap}
+
+/* LOADING */
+.loading{display:flex;align-items:center;gap:10px;padding:40px;color:var(--g400);font-size:13px;font-family:'DM Mono',monospace}
+.spinner{width:18px;height:18px;border:2px solid var(--g200);border-top-color:var(--navy);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* INSTRUCTOR BOX */
+.inst-box{background:linear-gradient(135deg,#0f1f3d,#1a3260);border-radius:10px;padding:16px 20px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.inst-box .ib-lbl{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-light);margin-bottom:4px}
+.inst-box .ib-text{font-size:12.5px;color:rgba(255,255,255,.75);line-height:1.6}
+.inst-box code{font-family:'DM Mono',monospace;font-size:11px;background:rgba(255,255,255,.1);padding:1px 5px;border-radius:2px;color:var(--gold-light)}
+.edit-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:var(--gold);color:var(--navy);border-radius:4px;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap;transition:background .15s;flex-shrink:0}
+.edit-btn:hover{background:var(--gold-light)}
+
+@media(max-width:760px){
+  .shell{flex-direction:column;height:auto}
+  .sb{width:100%;height:auto}
+  .main{overflow-y:auto}
+  .page{padding:20px 16px 40px}
+  .stat-grid{grid-template-columns:1fr 1fr}
+  .unit-hero{flex-direction:column}
+  .uh-right{align-items:flex-start}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<!-- SIDEBAR -->
+<aside class="sb">
+  <div class="sb-brand">
+    <div class="sb-dept">Christ University · Civil Engg</div>
+    <div class="sb-code">CE541E08</div>
+    <div class="sb-title">Python &amp; MATLAB Programming</div>
+    <div class="sb-tag">COURSE DELIVERY HUB</div>
+  </div>
+  <div class="nav-lbl">Units</div>
+  <button class="nav-btn active" onclick="showPage('home',this)">
+    <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+    Home
+  </button>
+  <button class="nav-btn" onclick="showPage('u1',this)">
+    <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+    Unit 1 — Python Basics
+  </button>
+  <button class="nav-btn" onclick="showPage('u2',this)">
+    <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+    Unit 2 — Loops &amp; Decisions
+  </button>
+  <button class="nav-btn" onclick="showPage('u3',this)">
+    <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/></svg>
+    Unit 3 — NumPy
+  </button>
+  <button class="nav-btn" onclick="showPage('u4',this)">
+    <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+    Unit 4 — Pandas
+  </button>
+  <button class="nav-btn" onclick="showPage('u5',this)">
+    <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+    Unit 5 — MATLAB
+  </button>
+  <div class="sb-links">
+    <div class="sb-links-lbl">Quick Links</div>
+    <a class="sb-link" href="https://colab.research.google.com" target="_blank"><div class="sb-dot" style="background:#f4a261"></div>Google Colab</a>
+    <a class="sb-link" href="https://github.com/PradhanArpan/CE541E08-2026" target="_blank"><div class="sb-dot" style="background:#57cc99"></div>GitHub Repo</a>
+    <a class="sb-link" href="https://classroom.google.com" target="_blank"><div class="sb-dot" style="background:#4cc9f0"></div>Google Classroom</a>
+    <a class="sb-link" href="https://imdpune.gov.in" target="_blank"><div class="sb-dot" style="background:#c8973a"></div>IMD Data</a>
+    <a class="sb-link" href="https://cwc.gov.in" target="_blank"><div class="sb-dot" style="background:#c8973a"></div>CWC Data</a>
+    <a class="sb-link" href="https://matlab.mathworks.com" target="_blank"><div class="sb-dot" style="background:#ef233c"></div>MATLAB Online</a>
+    <a class="sb-link" href="https://github.com/PradhanArpan/CE541E08-2026/edit/main/sessions.json" target="_blank"><div class="sb-dot" style="background:var(--gold)"></div>⚙ Enable sessions</a>
+  </div>
+  <div class="sb-footer">Dr. Arpan Pradhan<br>arpan.pradhan@christuniversity.in<br>9439291900</div>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+
+<!-- HOME -->
+<div id="home" class="page active">
+  <div class="ph"><h1>Course Delivery Hub</h1><div class="ph-tag">CE541E08 · 2026-27</div></div>
+  <div class="inst-box">
+    <div>
+      <div class="ib-lbl">⚙ Instructor — to enable a session before class</div>
+      <div class="ib-text">
+        Open <code>sessions.json</code> on GitHub → find today's day → change <code>"enabled": false</code> to <code>"enabled": true</code> → Commit changes.<br>
+        Students refresh this page and the Colab link appears automatically.
+      </div>
+    </div>
+    <a class="edit-btn" href="https://github.com/PradhanArpan/CE541E08-2026/edit/main/sessions.json" target="_blank">⚙ Edit sessions.json →</a>
+  </div>
+  <div class="stat-grid">
+    <div class="stat"><div class="sv" id="st-open">-</div><div class="sl">Sessions Open</div></div>
+    <div class="stat"><div class="sv" id="st-lock">-</div><div class="sl">Locked</div></div>
+    <div class="stat"><div class="sv">45</div><div class="sl">Total Sessions</div></div>
+    <div class="stat"><div class="sv">5</div><div class="sl">Units</div></div>
+  </div>
+  <div class="sec-title" style="margin-bottom:12px">Units — click to view sessions</div>
+  <a class="unc" onclick="navTo('u1');return false" href="#"><div class="unc-l"><div class="unc-badge" style="background:#dbeafe;color:#1e3a8a">U1</div><div><div class="unc-title">Introduction to Python</div><div class="unc-sub">Days 1-9 · Variables, data types, I/O, Manning's equation</div></div></div><div class="unc-r" id="cnt-1">-</div></a>
+  <a class="unc" onclick="navTo('u2');return false" href="#"><div class="unc-l"><div class="unc-badge" style="background:#dcfce7;color:#14532d">U2</div><div><div class="unc-title">Decision Structures &amp; Looping</div><div class="unc-sub">Days 10-18 · if/else, for, while · IMD rainfall data</div></div></div><div class="unc-r" id="cnt-2">-</div></a>
+  <a class="unc" onclick="navTo('u3');return false" href="#"><div class="unc-l"><div class="unc-badge" style="background:#fce7f3;color:#831843">U3</div><div><div class="unc-title">The NumPy Library</div><div class="unc-sub">Days 19-27 · Arrays, indexing, FDC · CWC streamflow</div></div></div><div class="unc-r" id="cnt-3">-</div></a>
+  <a class="unc" onclick="navTo('u4');return false" href="#"><div class="unc-l"><div class="unc-badge" style="background:#ffedd5;color:#7c2d12">U4</div><div><div class="unc-title">The Pandas Library</div><div class="unc-sub">Days 28-36 · DataFrames, groupby · basin analysis</div></div></div><div class="unc-r" id="cnt-4">-</div></a>
+  <a class="unc" onclick="navTo('u5');return false" href="#"><div class="unc-l"><div class="unc-badge" style="background:#f3e8ff;color:#581c87">U5</div><div><div class="unc-title">Introduction to MATLAB</div><div class="unc-sub">Days 37-45 · UI, loops, arrays · pipe networks · capstone</div></div></div><div class="unc-r" id="cnt-5">-</div></a>
+  <div class="loading" id="home-loading" style="margin-top:16px"><div class="spinner"></div>Loading session status...</div>
+</div>
+
+<!-- UNIT PAGES -->
+
+<div id="u1" class="page">
+  <div class="ph"><h1>Unit 1 — Introduction to Python</h1><div class="ph-tag">Days 1-9</div></div>
+  <div class="unit-hero">
+    <div class="uh-left">
+      <div class="uh-num">Unit I · CO1</div>
+      <div class="uh-name">Introduction to Python</div>
+      <div class="uh-syl">Elements of Python language, Python block structure, variables and assignment statement, data types, operations, simple input/output print statements, formatting print statement.</div>
+    </div>
+    <div class="uh-right">
+      <span class="hrs-badge">09 Hours</span>
+      <span class="co-badge u1b">CO1</span>
+      <a class="gh-link" href="https://github.com/PradhanArpan/CE541E08-2026/tree/main/Unit1_PythonBasics" target="_blank">↗ Submit folder</a>
+    </div>
+  </div>
+  <div class="loading" id="load-u1"><div class="spinner"></div>Loading sessions...</div>
+  <div class="tw" id="wrap-u1" style="display:none">
+    <table class="t">
+      <thead><tr><th style="width:56px">Day</th><th>Topic &amp; Civil Engineering Hook</th><th>Notebook</th><th style="width:90px">Status</th></tr></thead>
+      <tbody id="tb-u1"></tbody>
+    </table>
+  </div>
+</div>
+<div id="u2" class="page">
+  <div class="ph"><h1>Unit 2 — Decision Structures & Looping</h1><div class="ph-tag">Days 10-18</div></div>
+  <div class="unit-hero">
+    <div class="uh-left">
+      <div class="uh-num">Unit II · CO2</div>
+      <div class="uh-name">Decision Structures & Looping</div>
+      <div class="uh-syl">Forming conditions, if statement, if-else and nested if-else, looping statements, Python built-in functions for looping, loop statements, jump statement.</div>
+    </div>
+    <div class="uh-right">
+      <span class="hrs-badge">09 Hours</span>
+      <span class="co-badge u2b">CO2</span>
+      <a class="gh-link" href="https://github.com/PradhanArpan/CE541E08-2026/tree/main/Unit2_LoopsDecisions" target="_blank">↗ Submit folder</a>
+    </div>
+  </div>
+  <div class="loading" id="load-u2"><div class="spinner"></div>Loading sessions...</div>
+  <div class="tw" id="wrap-u2" style="display:none">
+    <table class="t">
+      <thead><tr><th style="width:56px">Day</th><th>Topic &amp; Civil Engineering Hook</th><th>Notebook</th><th style="width:90px">Status</th></tr></thead>
+      <tbody id="tb-u2"></tbody>
+    </table>
+  </div>
+</div>
+<div id="u3" class="page">
+  <div class="ph"><h1>Unit 3 — The NumPy Library</h1><div class="ph-tag">Days 19-27</div></div>
+  <div class="unit-hero">
+    <div class="uh-left">
+      <div class="uh-num">Unit III · CO3, CO4</div>
+      <div class="uh-name">The NumPy Library</div>
+      <div class="uh-syl">Ndarray, basic operations, indexing, slicing and iterating, conditions and boolean arrays, array manipulation, reading and writing array data on files.</div>
+    </div>
+    <div class="uh-right">
+      <span class="hrs-badge">09 Hours</span>
+      <span class="co-badge u3b">CO3, CO4</span>
+      <a class="gh-link" href="https://github.com/PradhanArpan/CE541E08-2026/tree/main/Unit3_NumPy" target="_blank">↗ Submit folder</a>
+    </div>
+  </div>
+  <div class="loading" id="load-u3"><div class="spinner"></div>Loading sessions...</div>
+  <div class="tw" id="wrap-u3" style="display:none">
+    <table class="t">
+      <thead><tr><th style="width:56px">Day</th><th>Topic &amp; Civil Engineering Hook</th><th>Notebook</th><th style="width:90px">Status</th></tr></thead>
+      <tbody id="tb-u3"></tbody>
+    </table>
+  </div>
+</div>
+<div id="u4" class="page">
+  <div class="ph"><h1>Unit 4 — The Pandas Library</h1><div class="ph-tag">Days 28-36</div></div>
+  <div class="unit-hero">
+    <div class="uh-left">
+      <div class="uh-num">Unit IV · CO4</div>
+      <div class="uh-name">The Pandas Library</div>
+      <div class="uh-syl">Introduction to data structure, other functionalities on indexes, operations between data structures, function application and mapping.</div>
+    </div>
+    <div class="uh-right">
+      <span class="hrs-badge">09 Hours</span>
+      <span class="co-badge u4b">CO4</span>
+      <a class="gh-link" href="https://github.com/PradhanArpan/CE541E08-2026/tree/main/Unit4_Pandas" target="_blank">↗ Submit folder</a>
+    </div>
+  </div>
+  <div class="loading" id="load-u4"><div class="spinner"></div>Loading sessions...</div>
+  <div class="tw" id="wrap-u4" style="display:none">
+    <table class="t">
+      <thead><tr><th style="width:56px">Day</th><th>Topic &amp; Civil Engineering Hook</th><th>Notebook</th><th style="width:90px">Status</th></tr></thead>
+      <tbody id="tb-u4"></tbody>
+    </table>
+  </div>
+</div>
+<div id="u5" class="page">
+  <div class="ph"><h1>Unit 5 — Introduction to MATLAB</h1><div class="ph-tag">Days 37-45</div></div>
+  <div class="unit-hero">
+    <div class="uh-left">
+      <div class="uh-num">Unit IVV · CO5</div>
+      <div class="uh-name">Introduction to MATLAB</div>
+      <div class="uh-syl">MATLAB UI, Key Parts, Fundamentals, Data Types, Mathematical Expressions, Colon Notations, Array Operations, Loop - for, Loop - while, break, continue.</div>
+    </div>
+    <div class="uh-right">
+      <span class="hrs-badge">09 Hours</span>
+      <span class="co-badge u5b">CO5</span>
+      <a class="gh-link" href="https://github.com/PradhanArpan/CE541E08-2026/tree/main/Unit5_MATLAB" target="_blank">↗ Submit folder</a>
+    </div>
+  </div>
+  <div class="loading" id="load-u5"><div class="spinner"></div>Loading sessions...</div>
+  <div class="tw" id="wrap-u5" style="display:none">
+    <table class="t">
+      <thead><tr><th style="width:56px">Day</th><th>Topic &amp; Civil Engineering Hook</th><th>Notebook</th><th style="width:90px">Status</th></tr></thead>
+      <tbody id="tb-u5"></tbody>
+    </table>
+  </div>
+</div>
+
+</main>
+</div>
+
+<script>
+const GH    = 'https://github.com/PradhanArpan/CE541E08-2026';
+const RAW   = 'https://raw.githubusercontent.com/PradhanArpan/CE541E08-2026/main/sessions.json';
+const EXTRA = {17:`<a class="data-link" href="https://imdpune.gov.in" target="_blank">IMD data</a>`,26:`<a class="data-link" href="https://cwc.gov.in" target="_blank">CWC data</a>`,37:`<a class="data-link" href="https://matlab.mathworks.com" target="_blank">MATLAB Online</a>`};
+const SUB   = {9:1,18:2,27:3,36:4,44:5,45:5};
+const FOLD  = {1:'Unit1_PythonBasics',2:'Unit2_LoopsDecisions',3:'Unit3_NumPy',4:'Unit4_Pandas',5:'Unit5_MATLAB'};
+const UNAMES= {1:'Introduction to Python',2:'Decision Structures & Looping',3:'The NumPy Library',4:'The Pandas Library',5:'Introduction to MATLAB'};
+const UDAYS = {1:'Days 1-9',2:'Days 10-18',3:'Days 19-27',4:'Days 28-36',5:'Days 37-45'};
+
+let SESSIONS = [];
+
+async function loadSessions() {
+  try {
+    const res  = await fetch(RAW + '?t=' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    SESSIONS   = data.sessions;
+    render();
+  } catch(e) {
+    document.getElementById('home-loading').innerHTML =
+      `<div style="color:#991b1b;font-size:13px;padding:20px 0">
+        ⚠ Could not load sessions.json from GitHub.<br>
+        Make sure <strong>sessions.json</strong> exists in the root of <strong>PradhanArpan/CE541E08-2026</strong>.<br><br>
+        <a href="https://github.com/PradhanArpan/CE541E08-2026" target="_blank" style="color:#1a4a6b">→ Open GitHub repo</a>
+      </div>`;
+    [1,2,3,4,5].forEach(u => {
+      document.getElementById('load-u'+u).innerHTML =
+        '<div style="padding:20px;color:#991b1b;font-size:13px">⚠ Could not load session data.</div>';
+    });
+  }
+}
+
+function render() {
+  const open = SESSIONS.filter(s=>s.enabled).length;
+  document.getElementById('st-open').textContent = open;
+  document.getElementById('st-lock').textContent = 45 - open;
+  document.getElementById('home-loading').style.display = 'none';
+
+  [1,2,3,4,5].forEach(u => {
+    const us   = SESSIONS.filter(s=>s.unit===u);
+    const uOpen = us.filter(s=>s.enabled).length;
+    const cnt  = document.getElementById('cnt-'+u);
+    if(cnt) cnt.textContent = uOpen + ' / ' + us.length + ' open →';
+
+    const rows = us.map(s => {
+      const pad = String(s.day).padStart(2,'0');
+      let nb, st, cls='';
+      if(s.enabled) {
+        const ex  = EXTRA[s.day] || '';
+        const sub = SUB[s.day] ? `<a class="gh-link" href="${GH}/tree/main/${FOLD[SUB[s.day]]}" target="_blank">↗ Submit</a>` : '';
+        nb  = `<div class="btn-row"><a class="nb-link" href="${s.colab}" target="_blank">↗ Open notebook</a>${sub}${ex}</div>`;
+        st  = '<span class="s-open">Open</span>';
+      } else {
+        nb  = '<span class="locked-pill">🔒 Not yet released</span>';
+        st  = '<span class="s-lock">Locked</span>';
+        cls = 'locked';
+      }
+      return `<tr class="${cls}">
+        <td><span class="day-num">${pad}</span></td>
+        <td><strong style="font-size:13px">${s.topic}</strong><br>
+            <span style="font-size:11px;color:var(--tl);font-style:italic">${s.hook}</span></td>
+        <td>${nb}</td><td>${st}</td></tr>`;
+    }).join('');
+
+    document.getElementById('tb-u'+u).innerHTML   = rows;
+    document.getElementById('load-u'+u).style.display = 'none';
+    document.getElementById('wrap-u'+u).style.display = '';
+  });
+}
+
+function showPage(id,btn) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  document.querySelector('.main').scrollTop=0;
+}
+function navTo(id) {
+  const btn=document.querySelector(`[onclick="showPage('${id}',this)"]`);
+  if(btn) showPage(id,btn);
+}
+
+loadSessions();
+</script>
+</body>
+</html>
