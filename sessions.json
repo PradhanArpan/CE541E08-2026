@@ -20,7 +20,7 @@
       "notebook": "CE541E08_U1_Day2.ipynb",
       "colab": "https://githubtocolab.com/PradhanArpan/CE541E08-2026/blob/main/Unit1_PythonBasics/CE541E08_U1_Day2.ipynb",
       "submit": "https://github.com/PradhanArpan/CE541E08-2026/tree/main/Unit1_PythonBasics",
-      "enabled": true
+      "enabled": false
     },
     {
       "day": 3,
@@ -125,7 +125,7 @@
       "day": 12,
       "unit": 2,
       "topic": "Nested if-else",
-      "hook": "Soil erosion risk: rainfall intensity \u00d7 slope class",
+      "hook": "Soil erosion risk: rainfall intensity x slope class",
       "folder": "Unit2_LoopsDecisions",
       "notebook": "CE541E08_U2_Day12.ipynb",
       "colab": "https://githubtocolab.com/PradhanArpan/CE541E08-2026/blob/main/Unit2_LoopsDecisions/CE541E08_U2_Day12.ipynb",
