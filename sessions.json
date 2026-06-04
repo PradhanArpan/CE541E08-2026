@@ -16,7 +16,7 @@
       "folder": "Unit1_PythonBasics",
       "notebook": "CE541E08_U1_Day2.ipynb",
       "topic": "Elements of Python language \u00b7 syntax & indentation",
-      "enabled": false
+      "enabled": true
     },
     {
       "day": 3,
@@ -25,7 +25,7 @@
       "folder": "Unit1_PythonBasics",
       "notebook": "CE541E08_U1_Day3.ipynb",
       "topic": "Python block structure \u00b7 import statements",
-      "enabled": false
+      "enabled": true
     },
     {
       "day": 4,
@@ -34,7 +34,7 @@
       "folder": "Unit1_PythonBasics",
       "notebook": "CE541E08_U1_Day4.ipynb",
       "topic": "Variables and assignment statements",
-      "enabled": false
+      "enabled": true
     },
     {
       "day": 5,
@@ -43,7 +43,7 @@
       "folder": "Unit1_PythonBasics",
       "notebook": "CE541E08_U1_Day5.ipynb",
       "topic": "Data types \u2014 int, float, string, bool",
-      "enabled": false
+      "enabled": true
     },
     {
       "day": 6,
